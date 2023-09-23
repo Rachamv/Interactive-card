@@ -1,7 +1,5 @@
 # Interactive Card Details - Code Monster Challenge Solution
 
-This is a solution to the [Interactive card details form challenge on Code Monster](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw). Code Monster challenges help you improve your coding skills by building realistic projects.
-
 ## Table of Contents
 
 - [Overview](#overview)
