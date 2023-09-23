@@ -1,0 +1,410 @@
+/* Josh Comeau reset https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;
+  font-family: mono;
+}
+
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* Include the Google Fonts link for 'Space Grotesk' */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&display=swap");
+
+/* Define CSS variables (custom properties) */
+:root {
+  --clr-neutral-100: hsl(0, 0%, 100%); /* Define a white color */
+  --clr-neutral-300: hsl(270, 3%, 87%); /* A light gray color */
+  --clr-neutral-600: hsl(279, 6%, 55%); /* A medium gray color */
+  --clr-accent-400: hsl(0, 100%, 66%); /* An accent color */
+  --clr-accent-900: hsl(278, 68%, 11%); /* A dark accent color */
+  --linearGradient: hsl(249, 99%, 64%) to hsl(278, 94%, 30%); /* Define a gradient */
+  --ff-primary: "Space Grotesk", sans-serif; /* Define the primary font family */
+  --ff-body: var(--ff-primary); /* Use primary font for body text */
+  --ff-heading: var(--ff-primary); /* Use primary font for headings */
+  --fs-100: 0.56rem; /* Define font size for specific elements */
+  --fs-200: 0.75rem;
+  --fs-300: 1rem;
+  --fs-400: 1.25rem;
+  --fs-500: 1.75rem;
+  --fw-regular: 400; /* Define font weights */
+  --fw-bold: 600;
+}
+
+/* Media query for smaller screens */
+@media screen and (min-width: 570px) {
+  :root {
+    --fs-100: 0.75rem; /* Adjust font sizes for larger screens */
+    --fs-200: 1rem;
+    --fs-300: 1.25rem;
+    --fs-400: 1.75rem;
+  }
+}
+
+/* Apply styles to the body element */
+body {
+  min-height: 100vh; /* Minimum height of the body (viewport height) */
+  margin: 0 auto; /* Center the content horizontally */
+  display: grid; /* Use CSS Grid layout for the body content */
+  font-family: var(--ff-primary); /* Use the primary font family */
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 750px) {
+  main {
+    align-content: center; /* Center the content within the grid */
+    display: grid; /* Use CSS Grid layout for main content */
+    grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+    grid-template-rows: 1fr; /* One row */
+    grid-gap: 0 2rem; /* Define the gap between grid items */
+  }
+}
+
+.card {
+  display: grid; /* Use CSS Grid layout for card */
+  grid-template-rows: repeat(12, 1fr); /* Define 12 rows */
+  grid-template-columns: repeat(10, 0.5fr); /* Define 10 columns */
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 750px) {
+  .card {
+    grid-template-rows: repeat(2, 0.2fr) repeat(2, 0.45fr) 0.1fr repeat(
+        2,
+        0.45fr
+      ) repeat(2, 0.2fr);
+    /* Adjust grid row heights for larger screens */
+  }
+}
+
+/* Styles for the card background */
+.card__background {
+  grid-area: 1 / 1 / 11 / 14;
+  background: url("./images/bg-main-mobile.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 750px) {
+  .card__background {
+    grid-area: 1 / 1 / 13 / 8; /* Adjust the grid area for larger screens */
+  }
+}
+
+/* Styles for the card back */
+.card__back {
+  grid-area: 2 / 3 / 9 / 10;
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 750px) {
+  .card__back {
+    grid-area: 6 / 4 / 8 / 14; /* Adjust the grid area for larger screens */
+  }
+}
+
+/* Styles for the card front */
+.card__front {
+  grid-area: 6 / 2 / 13 / 9;
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 750px) {
+  .card__front {
+    grid-area: 3 / 3 / 5 / 10;
+  }
+}
+
+/* Common styles for card front and back */
+.card__back,
+.card__front {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 0.15fr 1fr 0.15fr;
+  font-size: var(--fs-200);
+  font-weight: var(--fw-regular);
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px 2px hsla(0, 0%, 0%, 0.25);
+  color: var(--clr-neutral-100);
+}
+
+/* Styles for card image */
+.card__img {
+  place-self: stretch;
+  grid-area: 1 / 1 / 4 / 4;
+}
+
+/* Styles for CVC (Card Verification Code) */
+.card__cvc {
+  grid-area: 2 / 2 / 3 / 3;
+  align-self: center;
+  justify-self: right;
+}
+
+/* Styles for card logo */
+.card__logo {
+  max-width: 30%;
+  grid-area: 1 / 2 / 2 / 3;
+  align-self: flex-end;
+}
+
+/* Styles for card number */
+.card__number {
+  grid-area: 2 / 2 / 3 / 3;
+  align-self: flex-end;
+  font-size: var(--fs-300);
+}
+
+/* Styles for cardholder name */
+.card__cardholder {
+  max-width: 75%;
+  grid-area: 3 / 2 / 4 / 3;
+  align-self: center;
+  justify-self: flex-start;
+}
+
+/* Styles for card detail wrapper */
+.card-detail-wrapper {
+  grid-area: 3 / 2 / 4 / 3;
+  align-self: center;
+  justify-self: flex-end;
+  display: flex;
+}
+
+/* Style for month text with a forward slash */
+.card__month::after {
+  content: "/";
+}
+
+/* Styles for the form wrapper */
+.form-wrapper {
+  align-self: center; /* Align the form wrapper to the center of the screen */
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Styles for the form card */
+.form-card {
+  max-width: 28rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* Styles for the control wrapper (input label and input field) */
+.control-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Styles for form labels */
+.form__label {
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.05rem;
+  font-size: var(--fs-200);
+  text-transform: uppercase;
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 750px) {
+  .form__label {
+    letter-spacing: 0.1rem;
+    font-size: var(--fs-100); /* Adjust label font size for larger screens */
+  }
+}
+
+/* Styles for form inputs */
+.form__input {
+  padding: 0.4rem 1rem;
+  font-size: var(--fs-300);
+  border: 1px solid var(--clr-neutral-300);
+  border-radius: 0.5rem;
+}
+
+/* Remove the default spinner buttons for number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Styles for input placeholders */
+.form__input::placeholder {
+  font-size: inherit;
+  font-weight: var(--fw-regular);
+  color: var(--clr-neutral-300);
+}
+
+/* Styles for inputs with errors */
+.form__input--error {
+  outline: 2px solid var(--clr-accent-400);
+}
+
+/* Styles for error messages */
+.form__error {
+  color: var(--clr-accent-400);
+}
+
+/* Styles for error message wrappers (if needed) */
+.wrapper-error {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Styles for row of controls (e.g., month, year, cvc) */
+.control-wrapper-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Styles for the first and second row of controls */
+.first-row,
+.second-row {
+  width: 50%;
+}
+
+/* Styles for the date input wrapper */
+.wrapper-date {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Styles for date inputs */
+.input__date {
+  display: block;
+  width: 100%;
+}
+
+/* Styles for the submit button */
+.submit__button {
+  margin-top: 1rem;
+  align-self: stretch;
+  padding: 0.75rem;
+  font-weight: var(--fw-regular);
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--clr-neutral-100);
+  background-color: var(--clr-accent-900);
+}
+
+/* Hover styles for the submit button */
+.submit__button:hover {
+  border: 1px solid var(--clr-accent-900);
+  color: var(--clr-accent-900);
+  background-color: var(--clr-neutral-100);
+  transition: all 0.15s ease-in;
+  cursor: pointer;
+}
+
+/* Styles for the modal (pop-up) */
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  gap: 2rem;
+}
+
+/* Styles for the text within the modal */
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-weight: var(--fw-bold);
+}
+
+/* Styles for the first paragraph within the text wrapper */
+.text-wrapper p:first-child {
+  font-size: var(--fs-400);
+  text-transform: uppercase;
+}
+
+/* Styles for the second paragraph within the text wrapper */
+.text-wrapper p:last-child {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+  color: var(--clr-neutral-300);
+}
+
+/* Hidden class to hide elements */
+.hidden {
+  display: none;
+}

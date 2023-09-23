@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Adewunmi Oladele" />
+    <meta
+      name="description"
+      content="Interactive card form validation with curtom Regex"
+    />
+    <meta
+      name="keywords"
+      content="HTML5, CSS3, JavaScript, Regular Expression"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/icon-complete.svg"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Interactive Card Details</title>
+  </head>
+
+  <body>
+    <main>
+      <section class="card">
+        <div class="card__background"></div>
+        <div class="card__back">
+          <img
+            class="card__img"
+            src="./images/bg-card-back.png"
+            alt="card back details"
+          />
+          <p id="detail-cvc" class="card__detail card__cvc">123</p>
+        </div>
+        <div class="card__front">
+          <img
+            class="card__img"
+            src="./images/bg-card-front.png"
+            alt="card front details"
+          />
+          <img
+            class="card__logo"
+            src="./images/card-logo.svg"
+            alt="card logo"
+          />
+          <p class="card__number card__detail" id="detail-number">
+            0000 0000 0000 0000
+          </p>
+          <p class="card__cardholder card__detail" id="detail-cardholder">
+            Jane Appleseed
+          </p>
+          <div class="card-detail-wrapper">
+            <p class="card__month card__detail" id="detail-month">00</p>
+            <p class="card__year card__detail" id="detail-year">00</p>
+          </div>
+        </div>
+      </section>
+      <section class="form-wrapper">
+        <form name="form-card" class="form-card">
+          <div class="control-wrapper">
+            <label for="card-cardholder" class="form__label"
+              >cardholder name</label
+            >
+            <input
+              id="card-cardholder"
+              class="form__input"
+              type="text"
+              placeholder="e.g. Jane Appleseed River"
+            />
+            <p class="hidden form__error" id="error-cardholder"></p>
+          </div>
+          <div class="control-wrapper">
+            <label for="card-number" class="form__label">card number</label>
+            <input
+              id="card-number"
+              class="form__input"
+              type="number"
+              placeholder="e.g. 1234 5678 9123 0000"
+            />
+            <p class="hidden form__error" id="error-number"></p>
+          </div>
+          <div class="control-wrapper-row">
+            <div class="control-wrapper first-row">
+              <label for="card-month" class="form__label"
+                >Exp. Date (MM/YY)</label
+              >
+              <div class="wrapper-date">
+                <input
+                  id="card-month"
+                  class="form__input input__date"
+                  type="number"
+                  placeholder="MM"
+                />
+                <input
+                  id="card-year"
+                  class="form__input input__date"
+                  type="number"
+                  placeholder="YY"
+                />
+              </div>
+              <p class="hidden form__error" id="error-month"></p>
+              <p class="hidden form__error" id="error-year"></p>
+            </div>
+            <div class="control-wrapper second-row">
+              <label for="card-cvc" class="form__label">card cvc</label>
+              <input
+                id="card-cvc"
+                class="form__input input__cvc"
+                type="number"
+                placeholder="e.g. 123"
+              />
+              <p class="hidden form__error" id="error-cvc"></p>
+            </div>
+          </div>
+          <button id="form-button" type="submit" class="submit__button">
+            Confirm
+          </button>
+        </form>
+        <div id="modal" class="modal hidden">
+          <img src="./images/icon-complete.svg" alt="Icon complete" />
+          <div class="text-wrapper">
+            <p>Thank you</p>
+            <p>We’ve added your card details</p>
+          </div>
+          <button id="modal-continuation" class="submit__button">
+            continue
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
